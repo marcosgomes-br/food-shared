@@ -23,5 +23,7 @@ public class User
     public string LastName { get; }
     public string PhoneNumber { get; }
     public string Email { get; }
-    public string Password { get; }
+    public string Password { get; private set; }
+
+    public void ChangePassword(string password) => Password = password;
 }
