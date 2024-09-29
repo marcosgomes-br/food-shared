@@ -1,9 +1,11 @@
 using Carter;
+using FoodShared.API;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCarter();
+builder.Services.AddDependencies();
 
 var app = builder.Build();
 
