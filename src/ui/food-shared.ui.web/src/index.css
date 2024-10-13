@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f1ebe2;
+}
+
+.bg-image{
+  background: url(./logo.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.new-offer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FEFEFE;
+  border-radius: 0.8rem;
+  padding: 1.2rem 0;
+  overflow: hidden;
+  margin-top: 2.4rem;
+}
