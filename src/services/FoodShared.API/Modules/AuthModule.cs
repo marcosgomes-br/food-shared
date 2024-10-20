@@ -1,5 +1,6 @@
 ﻿using Carter;
 using FoodShared.Core.Interfaces.Services;
+using FoodShared.Core.Models.DTOs;
 
 namespace FoodShared.API.Modules;
 public class AuthModule : ICarterModule
@@ -13,6 +14,6 @@ public class AuthModule : ICarterModule
         auth.MapPost("logoff", LogOff);
     }
 
-    private async Task LogIn(IAuthService service) => await service.LogIn();
+    private async Task LogIn(IAuthService service, AuthDTO dto) => await service.LogIn(dto);
     private async Task LogOff(IAuthService service) => await service.LogOff();
 }

@@ -1,5 +1,6 @@
 ﻿using FoodShared.Core.Models.Validators;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace FoodShared.Core.Models.Entities;
 public class Offer
@@ -9,16 +10,12 @@ public class Offer
         string title, 
         string description, 
         int quantity, 
-        long latitude,
-        long longitude,
         Guid offerUserId)
     {
         Id = id;
         Title = title;
         Description = description;
         Quantity = quantity;
-        Latitude = latitude;
-        Longitude = longitude;
         OfferUserId = offerUserId;
 
         var validator = new OfferValidator().Validate(this);
@@ -26,14 +23,16 @@ public class Offer
             throw new ApplicationException(validator.ToString("\n"));
     }
 
-    public Guid Id { get; }
-    public string Title { get; }
-    public string Description { get; }
+    public Guid Id { get; private set; } = Guid.NewGuid();
+    public string Title { get; private set; }
+    public string Description { get; private set; }
     public int Quantity { get; private set; }
-    public long Latitude { get; set; }
-    public long Longitude { get; set; }
     public Guid OfferUserId { get; }
+
+    [JsonIgnore]
     public User? User { get; set; }
+
+    [JsonIgnore]
     public List<Request> Requests { get; set; } = new();
     
     [NotMapped]

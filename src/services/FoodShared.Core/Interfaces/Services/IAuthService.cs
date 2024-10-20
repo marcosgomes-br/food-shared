@@ -1,6 +1,8 @@
-﻿namespace FoodShared.Core.Interfaces.Services;
+﻿using FoodShared.Core.Models.DTOs;
+
+namespace FoodShared.Core.Interfaces.Services;
 public interface IAuthService
 {
-    Task LogIn();
+    Task LogIn(AuthDTO dto);
     Task LogOff();
 }

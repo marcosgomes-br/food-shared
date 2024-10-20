@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { red, blue, yellow, green, blueGrey } from '@mui/material/colors';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
-import { Button, Container, Fab, Grid2 } from '@mui/material';
-import foodShared from '../foodShared.svg'; 
+import { Container, Fab, Grid2 } from '@mui/material';
+import foodShared from '../images/foodShared.svg';
 import { offer } from '../types/offer';
 import { OfferCard } from '../components/OfferCard';
+import { Link } from 'react-router-dom';
+import { get } from '../services/api';
 
 const HomePage: React.FC = () => {
   const offers: offer[] = [
@@ -90,6 +92,13 @@ const HomePage: React.FC = () => {
     }
   ];
 
+  useEffect(() => {
+    const getData = async () => {
+      get('offer');
+    };
+    getData();
+  }, []);
+
   return (
     <Container>
       <Grid2 container spacing={2}>
@@ -97,18 +106,19 @@ const HomePage: React.FC = () => {
           <img src={foodShared} height="50rem" width="auto" alt="Logo" />
         </Grid2>
         <Grid2 size={{md: 4}} mt={2} textAlign="right">
-          <Fab variant="extended">
-            <RestaurantIcon sx={{ mr: 1 }} />
-            Ofertar Comida
-          </Fab>
-          <Button variant="text" color="inherit">
-            
-          </Button>
+          <Link to="/offer">
+            <Fab variant="extended">
+              <RestaurantIcon sx={{ mr: 1 }} />
+              Ofertar Comida
+            </Fab>
+          </Link>
         </Grid2>
       {offers.map(offer => {
         return (
           <Grid2 size={{xs: 12, sm: 12, md: 3}}>
-            <OfferCard offer={offer} />
+            <OfferCard 
+              offer={offer}
+            />
           </Grid2>
         )
       })}

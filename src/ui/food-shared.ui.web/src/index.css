@@ -9,7 +9,7 @@ body {
 }
 
 .bg-image{
-  background: url(./logo.svg);
+  background: url(./images/logo.svg);
   background-size: cover;
   background-repeat: no-repeat;
 }

@@ -1,4 +1,5 @@
 ﻿using FoodShared.Core.Models.Validators;
+using System.Text.Json.Serialization;
 
 namespace FoodShared.Core.Models.Entities;
 public class User
@@ -18,12 +19,18 @@ public class User
             throw new ApplicationException(validator.ToString("\n"));
     }
 
-    public Guid Id { get; }
-    public string FirstName { get; }
-    public string LastName { get; }
-    public string PhoneNumber { get; }
-    public string Email { get; }
+    public Guid Id { get; private set; } = Guid.NewGuid();
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
+    public string PhoneNumber { get; private set; }
+    public string Email { get; private set; }
     public string Password { get; private set; }
+
+    [JsonIgnore]
+    public List<Request> Requests { get; set; } = new();
+
+    [JsonIgnore]
+    public List<Offer> Offers { get; set; } = new();
 
     public void ChangePassword(string password) => Password = password;
 }

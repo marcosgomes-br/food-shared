@@ -62,15 +62,16 @@ const OfferPage: React.FC = () => {
         </Grid2>
         <Grid2 size={{md: 3}}>
           <OfferCard offer={{
-            personOffer: "Maria Souza",
-            dateOffer: "Hoje, 10:00",
-            avatarOffer: "M",
-            avatarColor: red[500],
-            description: "Arroz de forno com queijo e presunto, gratinado no ponto certo. Perfeito para uma refeição prática e saborosa.",
-            image: "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/7c44045d2e8577819cb76b2b404902dd.jpg",
-            id: "offer001",
-            price: "R$ 10,00"
-          }} />
+              personOffer: "Maria Souza",
+              dateOffer: "Hoje, 10:00",
+              avatarOffer: "M",
+              avatarColor: red[500],
+              description: "Arroz de forno com queijo e presunto, gratinado no ponto certo. Perfeito para uma refeição prática e saborosa.",
+              image: "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/7c44045d2e8577819cb76b2b404902dd.jpg",
+              id: "offer001",
+              price: "R$ 10,00"
+            }} 
+          />
         </Grid2>
       </Grid2>
     </div>
