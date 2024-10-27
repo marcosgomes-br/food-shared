@@ -7,4 +7,5 @@ public interface IOfferRepository
     Task Create(Offer offer);
     Task Delete(Guid id);
     Task<List<Offer>> Get();
+    Task<List<Offer>> Get(Guid userId);
 }

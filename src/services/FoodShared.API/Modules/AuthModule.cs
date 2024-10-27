@@ -14,6 +14,6 @@ public class AuthModule : ICarterModule
         auth.MapPost("logoff", LogOff);
     }
 
-    private async Task LogIn(IAuthService service, AuthDTO dto) => await service.LogIn(dto);
+    private async Task<string> LogIn(IAuthService service, AuthDTO dto) => await service.LogIn(dto, Secutiry.Key);
     private async Task LogOff(IAuthService service) => await service.LogOff();
 }

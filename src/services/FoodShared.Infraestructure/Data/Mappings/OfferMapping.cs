@@ -8,6 +8,6 @@ public class OfferMapping : IEntityTypeConfiguration<Offer>
     public void Configure(EntityTypeBuilder<Offer> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.HasOne(x => x.User).WithMany(x => x.Offers).HasForeignKey(x => x.OfferUserId);
+        builder.HasOne(x => x.User).WithMany(x => x.Offers).HasForeignKey(x => x.UserId);
     }
 }

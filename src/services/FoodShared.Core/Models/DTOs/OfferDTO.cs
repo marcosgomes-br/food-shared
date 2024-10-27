@@ -1,11 +1,11 @@
 ﻿namespace FoodShared.Core.Models.DTOs;
-public record OptionDTO(
+public record OfferDTO(
     Guid id, 
     UserDTO user, 
     string timer, 
     string title, 
     string description,
     string image,
-    string value);
+    string price);
 
 public record UserDTO(string name, string profile);

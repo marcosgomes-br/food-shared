@@ -3,6 +3,6 @@
 namespace FoodShared.Core.Interfaces.Services;
 public interface IAuthService
 {
-    Task LogIn(AuthDTO dto);
+    Task<string> LogIn(AuthDTO dto, byte[] key);
     Task LogOff();
 }

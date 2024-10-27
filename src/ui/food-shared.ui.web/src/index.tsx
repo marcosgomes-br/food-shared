@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
+  redirect,
   RouterProvider,
 } from "react-router-dom";
 import './index.css';
@@ -12,6 +13,7 @@ import '@fontsource/roboto/700.css';
 import HomePage from './pages/HomePage';
 import SignInPage from './pages/SignInPage';
 import OfferPage from './pages/OfferPage';
+import { verifyToken } from './services/auth';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,7 +26,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/offer",
-    element: <OfferPage />
+    element: <OfferPage />,
+    loader: () => {
+      if(!verifyToken()){
+        throw redirect('/sign-in');
+      }
+      return null;
+    }
   },
   {
     path: "/sign-in",

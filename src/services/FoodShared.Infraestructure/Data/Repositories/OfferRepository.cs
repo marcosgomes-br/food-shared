@@ -27,5 +27,12 @@ public class OfferRepository(FoodSharedContext context) : IOfferRepository
         await context.SaveChangesAsync();
     }
 
-    public async Task<List<Offer>> Get() => await context.Offers.ToListAsync();
+    public async Task<List<Offer>> Get() => await context.Offers.Include(x => x.User)
+                                                                .Include(x => x.Requests)
+                                                                .ToListAsync();
+
+    public async Task<List<Offer>> Get(Guid userId) => await context.Offers.Where(x => x.UserId == userId)
+                                                                           .Include(x => x.User)
+                                                                           .Include(x => x.Requests)
+                                                                           .ToListAsync();
 }

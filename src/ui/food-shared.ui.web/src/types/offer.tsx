@@ -1,10 +1,12 @@
-export type offer = {
-  personOffer: string;
-  dateOffer: string;
-  avatarOffer: string;
-  avatarColor: string;
+export type Offer = {
+  id: string;
+  user: {
+    name: string;
+    profile: string;
+  }
+  timer: string;
+  title: string;
   description: string;
   image: string;
-  id: string;
   price: string;
 }
