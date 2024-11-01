@@ -33,9 +33,11 @@ const HomePage: React.FC = () => {
       {offers.map(offer => {
         return (
           <Grid2 key={offer.id} size={{xs: 12, sm: 12, md: 3}}>
-            <OfferCard 
-              offer={offer}
-            />
+            <OfferCard.Root>
+              <OfferCard.Header user={offer.user} timer={offer.timer} />
+              <OfferCard.Body image={offer.image} description={offer.description} />
+              <OfferCard.Actions id={offer.id} price={offer.price} />
+            </OfferCard.Root>
           </Grid2>
         )
       })}

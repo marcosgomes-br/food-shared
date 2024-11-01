@@ -23,15 +23,12 @@ public class OfferService(IOfferRepository repository) : IOfferService
         var offers = await repository.Get(userId);
         return offers.Select(x => new OfferDTO(
                          id: x.Id,
-                         user: new(
-                             name: x.User!.FullName(),
-                             profile: x.User!.Profile()
-                         ),
                          timer: x.CreatedIn.FormartDataAndHours(),
                          title: x.Title,
                          description: x.Description,
                          image: x.Image,
-                         price: x.Price.ToString("C", new CultureInfo("pt-BR"))
+                         price: x.Price.ToString("C", new CultureInfo("pt-BR")),
+                         requests: x.Requests.Select(r => r.User!.FullName()).ToList()
                      )).ToList();
     }
 }

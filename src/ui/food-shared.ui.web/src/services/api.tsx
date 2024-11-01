@@ -44,3 +44,20 @@ export async function post<T>(
   }
 }
 
+export async function deletee(
+  path: string, 
+  successAction?: () => Promise<void> | void,
+  failedAction?: () => Promise<void> | void
+): Promise<void> {
+  try {
+    const response = (await api.delete(path, { headers: getAuthorization() })); 
+    if(response.status === 200 || response.status === 201)
+      successAction && successAction();
+  } catch (error: any) {
+    if(error.status === 401) {
+      window.sessionStorage.removeItem('bearer');
+      window.location.reload();
+    }
+    failedAction && failedAction();
+  }
+}

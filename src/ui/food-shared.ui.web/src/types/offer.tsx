@@ -9,4 +9,5 @@ export type Offer = {
   description: string;
   image: string;
   price: string;
+  requests?: string[];
 }

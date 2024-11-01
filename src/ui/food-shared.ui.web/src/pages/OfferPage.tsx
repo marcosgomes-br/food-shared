@@ -105,7 +105,15 @@ const OfferPage: React.FC = () => {
         </Grid2>
           {offers.map(offer => {
             return <Grid2 key={offer.id} size={{md: 3}}> 
-              <OfferCard offer={offer} />
+              <OfferCard.Root>
+                <OfferCard.Body image={offer.image} description={offer.description} />
+                <OfferCard.Requests 
+                  id={offer.id} 
+                  requests={offer.requests || []} 
+                  title={offer.title} 
+                  onRemove={async () => {await getOffers()}}
+                />
+              </OfferCard.Root>
             </Grid2>
           })}
       </Grid2>
