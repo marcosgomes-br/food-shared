@@ -34,5 +34,6 @@ public class OfferRepository(FoodSharedContext context) : IOfferRepository
     public async Task<List<Offer>> Get(Guid userId) => await context.Offers.Where(x => x.UserId == userId)
                                                                            .Include(x => x.User)
                                                                            .Include(x => x.Requests)
+                                                                           .ThenInclude(r => r.User)
                                                                            .ToListAsync();
 }

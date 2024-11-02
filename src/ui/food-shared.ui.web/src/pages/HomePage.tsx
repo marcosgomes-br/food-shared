@@ -6,6 +6,7 @@ import { Offer } from '../types/offer';
 import { OfferCard } from '../components/OfferCard';
 import { Link } from 'react-router-dom';
 import { get } from '../services/api';
+import { ToastContainer } from "react-toastify";
 
 const HomePage: React.FC = () => {
   const [offers, setOffers] = useState<Offer[]>([]);
@@ -42,6 +43,7 @@ const HomePage: React.FC = () => {
         )
       })}
       </Grid2>
+      <ToastContainer />
     </Container>);
 }
 
